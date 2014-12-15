@@ -465,7 +465,6 @@ public class ConversationItem extends LinearLayout {
     intent.putExtra("message_id", messageRecord.getId());
     intent.putExtra("is_bundle", messageRecord.isBundleKeyExchange());
     intent.putExtra("is_identity_update", messageRecord.isIdentityUpdate());
-    intent.putExtra("master_secret", masterSecret);
     intent.putExtra("sent", messageRecord.isOutgoing());
     context.startActivity(intent);
   }
@@ -497,7 +496,6 @@ public class ConversationItem extends LinearLayout {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(slide.getUri(), slide.getContentType());
-        intent.putExtra(MediaPreviewActivity.MASTER_SECRET_EXTRA, masterSecret);
         if (!messageRecord.isOutgoing()) intent.putExtra(MediaPreviewActivity.RECIPIENT_EXTRA, messageRecord.getIndividualRecipient().getRecipientId());
         intent.putExtra(MediaPreviewActivity.DATE_EXTRA, messageRecord.getDateReceived());
 
